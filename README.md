@@ -1,1 +1,1 @@
-# cyberSimulations
+Group Project where we built a virtual testing environment, to run a menu program of common cyber attacks against an Apache server we created. The server was designed with a focus on IDS and making proper logging of attacks. 
