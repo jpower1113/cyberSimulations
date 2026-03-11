@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About – Security Simulation Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            max-width: 900px;
+        }
+        h1, h2 {
+            color: #222;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .workflow {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 4px solid #444;
+        }
+    </style>
+</head>
+<body>
+
+<h1>About our Site</h1>
+
+<div class="section">
+    <p>
+        This dashboard is a security testing and monitoring interface designed to
+        demonstrate how common web attack patterns are detected and logged in a
+        controlled environment. It is intended for use only against the team’s
+        own virtual machine (VM) endpoints for educational, defensive, and validation
+        purposes.
+    </p>
+    <p>
+        By generating simulated traffic that resembles real-world attack techniques,
+        the dashboard provides immediate visibility into how application-layer requests
+        propagate through the web stack and how network-based detection tools respond.
+    </p>
+</div>
+
+<div class="section">
+    <h2>End-to-End Detection Workflow</h2>
+    <div class="workflow">
+        <p>
+            The dashboard demonstrates a complete security monitoring pipeline:
+        </p>
+        <ol>
+            <li>Run a traffic simulation from the dashboard</li>
+            <li>Traffic reaches the Apache/Flask web application</li>
+            <li>Suricata inspects the traffic and generates alerts</li>
+            <li>Apache access logs record the requests</li>
+            <li>The dashboard surfaces recent alerts and logs for review</li>
+        </ol>
+        <p>
+            This workflow provides clear evidence that simulated traffic is successfully
+            detected and correlated across multiple layers of the system.
+        </p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Simulation Sections</h2>
+
+    <h3>SQL Injection–Like Input Patterns</h3>
+    <p>
+        This section sends input patterns that resemble common SQL injection attempts.
+        These requests are used to validate that database-oriented attack signatures
+        are properly detected by Suricata and logged by the web server.
+    </p>
+
+    <h3>XSS–Like Payload Patterns</h3>
+    <p>
+        This section generates requests containing patterns similar to cross-site
+        scripting (XSS) payloads. The goal is to observe how script-like input is handled
+        by the application and flagged by intrusion detection rules.
+    </p>
+
+    <h3>Directory Traversal Attempts</h3>
+    <p>
+        This section simulates path traversal requests that attempt to access files
+        outside of the intended web directory structure. These requests help verify
+        detection of unauthorized file access attempts.
+    </p>
+
+    <h3>HTTP Load Spike</h3>
+    <p>
+        This section creates a short burst of HTTP requests to simulate a small load
+        spike. It is useful for observing how elevated request rates appear in access
+        logs and whether traffic-based alerts are triggered.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Viewing Results</h2>
+    <p>
+        After running any simulation, the dashboard displays recent Suricata alerts and
+        Apache access logs. These outputs provide immediate feedback and allow users to
+        correlate simulated activity with detection events.
+    </p>
+    <p>
+        Together, these views demonstrate how defensive monitoring tools can identify,
+        log, and surface suspicious behavior in real time.
+    </p>
+</div>
+
+<div class="section">
+    <p>
+        <strong>Note:</strong> This dashboard is intended strictly for authorized testing
+        within controlled environments. All simulations should be run only against
+        systems owned or explicitly permitted by the team.
+    </p>
+</div>
+
+</body>
+</html>
