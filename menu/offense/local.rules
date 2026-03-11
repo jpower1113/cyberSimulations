@@ -1,1 +1,9 @@
+alert http any any -> any 80 (msg:"TEST: Apache HTTP Request Detected"; flow:established,to_server; content:"GET"; http_method; sid:9000001; rev:2;)
 
+alert tls any any -> any 443 (msg:"TEST: Apache HTTPS Traffic Detected"; flow:established,to_server; sid:9000002; rev:5;)
+
+alert http any any -> any 5001 (msg:"FLASK APP HIT - HTTP Request to Flask"; flow:to_server; content:"/"; http_uri; sid:9100002; rev:2;)
+
+alert http any any -> $HOME_NET 80 (msg:"TEST: XSS Simulation - <script> pattern (Apache)"; flow:to_server,established; http.request_body; content:"<script>"; nocase; sid:9200001; rev:2;)
+
+alert http any any -> $HOME_NET 5001 (msg:"TEST: Flask XSS Simulation Detected"; flow:established,to_server; uricontent:"xss="; sid:9400001; rev:1;)
